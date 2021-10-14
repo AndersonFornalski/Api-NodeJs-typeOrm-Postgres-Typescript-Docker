@@ -1,4 +1,5 @@
-import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, OneToMany} from "typeorm";
+import { Release } from "./Release";
 
 @Entity()
 export class UserPet {
@@ -21,4 +22,6 @@ export class UserPet {
     @Column()
     password: string;
 
+    @OneToMany(() => Release, r => r.usuario )
+    release: Release[];
 }

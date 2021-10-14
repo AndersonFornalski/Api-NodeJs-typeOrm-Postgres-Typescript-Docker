@@ -17,7 +17,13 @@ export class UsuarioController{
         const userId = await getManager().findOne(UserPet, id);
         return userId;
     }
-
+    
+    async getReleaseToUserId(id: number){
+        const usuario = await getManager().findOne(UserPet, id, {
+            relations: [ 'release']
+        });
+        return usuario.release;
+    }
 
     
 }

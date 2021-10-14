@@ -12,5 +12,10 @@ export class ReleaseController{
         const getAllReleases = await getManager().find(Release);
         return getAllReleases; 
     }
+
+    async getReleaseId(id: number){
+        const releaseId = await getManager().findOne(Release, id);
+        return releaseId;
+    }
     
 }
