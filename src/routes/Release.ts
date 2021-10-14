@@ -22,5 +22,9 @@ routerRelease.post("/", async (req, res) => {
 
 routerRelease.get("/", async (req, res) => {
     const releases = await releaseCtrl.getReleases();
-    res.json(releases); 
+    if(!releases){
+        res.status(404).json({ message:"você ainda não possui lançamentos" })
+    }else{
+        res.status(200).json(releases)
+    }
 })

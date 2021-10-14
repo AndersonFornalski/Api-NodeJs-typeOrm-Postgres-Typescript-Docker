@@ -12,7 +12,7 @@ export class UsuarioController{
         const saveUser = await getManager().save(usuario);
         return saveUser;
     }
-
+ 
     async getUserId(id: number){
         const userId = await getManager().findOne(UserPet, id);
         return userId;
@@ -23,6 +23,11 @@ export class UsuarioController{
             relations: [ 'release']
         });
         return usuario.release;
+    }
+
+    async deleteUserId(id: number){
+        const userId = await getManager().delete(UserPet, id );
+        return userId;
     }
 
     
